@@ -123,7 +123,7 @@ if(genesis.GetHash() != uint256("0x01"))
             printf("block.nNonce = %u \n", genesis.nNonce);
             printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
         }
-	system(pause);
+	system("pause");
 }
 libzerocoin::ZerocoinParams* CChainParams::Zerocoin_Params(bool useModulusV1) const
 {
