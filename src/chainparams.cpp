@@ -56,7 +56,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints = 
 	boost::assign::map_list_of
-	(0, uint256("0000030a37e1b2f2469ad724b4cb7e7252866e1e86376ad14112fcef4057b283"));
+	(0, uint256("0000092959906d86b0a778142ef9995e268eb3b0106333aa089dc969f9b4f8c5"));
 /*    (259201, uint256("1c9121bf9329a6234bfd1ea2d91515f19cd96990725265253f4b164283ade5dd"))
     (424998, uint256("f31e381eedb0ed3ed65fcc98cc71f36012bee32e8efd017c4f9fb0620fd35f6b"))
     (616764, uint256("29dd0bd1c59484f290896687b4ffb6a49afa5c498caf61967c69a541f8191557")) //first block to use modifierV2
@@ -76,7 +76,7 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (1686229, uint256("bb42bf1e886a7c23474634c90893dd3d68a6ccbfea4ac92a98da5cad0c6a6cb7")); //!< Last block in the "wrapped" serial attack range **/
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1556559740, // * UNIX timestamp of last checkpoint block
+    1557434810, // * UNIX timestamp of last checkpoint block
     4000,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     200        // * estimated number of transactions per day after checkpoint
@@ -99,7 +99,7 @@ static const Checkpoints::CCheckpointData dataRegtest = {
     0,
     100};
 void MineGenesis(CBlock genesis) {
-if(genesis.GetHash() != uint256("0000030a37e1b2f2469ad724b4cb7e7252866e1e86376ad14112fcef4057b283"))
+if(genesis.GetHash() != uint256("0000092959906d86b0a778142ef9995e268eb3b0106333aa089dc969f9b4f8c5"))
         {
             printf("Looking for genesis block...\n");
             uint256 hashTarget;
@@ -215,15 +215,15 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1556559740; 
+        genesis.nTime = 1557434810; 
         genesis.nBits = 0x1e0ffff0;
-	genesis.nNonce = 1146585; 
+	genesis.nNonce = 702950; 
         hashGenesisBlock = genesis.GetHash();
         MineGenesis(genesis);
         //debug code
 	//    std::cout << "genesisinfo \n " << genesis.ToString();
-        assert(hashGenesisBlock == uint256("0000030a37e1b2f2469ad724b4cb7e7252866e1e86376ad14112fcef4057b283")); 
-        assert(genesis.hashMerkleRoot == uint256("7c3f1b5874e38c421d07fc20ce79ddb3bbaad19cdbad903a0b185070d6005b8c")); 
+        assert(hashGenesisBlock == uint256("0000092959906d86b0a778142ef9995e268eb3b0106333aa089dc969f9b4f8c5")); 
+        assert(genesis.hashMerkleRoot == uint256("7855a2f438b6c4e21b6471b3869d038463a8fbeb3f8b8083966c5a265ff40318")); 
 
 	vFixedSeeds.clear();
         vSeeds.clear();
