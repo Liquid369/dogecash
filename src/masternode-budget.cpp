@@ -910,28 +910,12 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
         CAmount nSubsidy = 500 * COIN;
         return ((nSubsidy / 100) * 10) * 146;
     }
-
-    //get block value and calculate from that
+//get block value and calculate from that
     CAmount nSubsidy = 0;
-    if (nHeight == 0) {
-	nSubsidy = 0 * COIN;
-   	} else if (nHeight == 1) {
-        nSubsidy = 5650000 * COIN;
-	} else if (nHeight <= Params().LAST_POW_BLOCK() && nHeight > 1) { //end PoW
-        nSubsidy = 12 * COIN;
-	} else if (nHeight <= 238620 && nHeight > Params().LAST_POW_BLOCK()) { //Start PoS
-        nSubsidy = 12 * COIN;
-	} else if (nHeight <= 764221 && nHeight >= 238621) {
-        nSubsidy = 10 * COIN;
-	} else if (nHeight <= 1289222 && nHeight >= 764222) {
-        nSubsidy = 6 * COIN;
-	}    else {
-        nSubsidy = 6 * COIN;
-	}
-
-        return ((nSubsidy / 100) * 10) * 1440 * 30;
-
+    nSubsidy = GetBlockValue(nHeight);
+        return ((nSubsidy / 100) * 10) * 1440 * 30; //Cut 10% from block rewards for governance
 }
+
 void CBudgetManager::NewBlock()
 {
     TRY_LOCK(cs, fBudgetNewBlock);
