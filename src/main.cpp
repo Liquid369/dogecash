@@ -1944,17 +1944,6 @@ int64_t GetBlockValue(int nHeight)
 	}    else {
         nSubsidy = 6 * COIN;
 	}
-      int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
-     int nBlockValue = nSubsidy;
-
-    if (nMoneySupply + nBlockValue >= Params().MaxMoneyOut())
-        nBlockValue = Params().MaxMoneyOut() - nMoneySupply;
-
-    if (nMoneySupply >= Params().MaxMoneyOut())
-        nBlockValue = 0;
-    if (nHeight <= Params().LAST_POW_BLOCK()) {
-        return nBlockValue;
-    }
     return nBlockValue;
 }
 
