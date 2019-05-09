@@ -1944,7 +1944,7 @@ int64_t GetBlockValue(int nHeight)
 	}    else {
         nSubsidy = 6 * COIN;
 	}
-    return nBlockValue;
+    return nSubsidy;
 }
 
 CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
