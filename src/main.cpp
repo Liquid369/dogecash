@@ -3084,7 +3084,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     // two in the chain that violate it. This prevents exploiting the issue against nodes in their
     // initial block download.
     bool fEnforceBIP30 = (!pindex->phashBlock) || // Enforce on CreateNewBlock invocations which don't have a hash.
-                         !((pindex->nHeight == 0 && pindex->GetBlockHash() == uint256("000009d8b2a3773e8a3f784f9d70bc1bcdb5a34c97dcffad1ca65869661896f7")));
+                         !((pindex->nHeight == 0 && pindex->GetBlockHash() == uint256("0000066c80c3266c4dfb3409ae05be0debff36ea25b9cca3768925acad59c004")));
 			   //||
                              //(pindex->nHeight == 91880 && pindex->GetBlockHash() == uint256("0x00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721")));
     if (fEnforceBIP30) {
