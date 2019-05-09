@@ -117,7 +117,7 @@ function download_node() {
   compile_error
 #   tar xvzf $COIN_ZIP -C $COIN_PATH >/dev/null 2>&1
 # unzip dogecash.zip
-tar -xzf dogecashd.tar.gz
+tar -xzf dogecash.tar.gz
 cd DogeCash-4.0.0/bin
 #7z e NixDG.7z
 chmod -R 775 *
