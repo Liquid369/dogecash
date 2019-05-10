@@ -276,7 +276,7 @@ public:
         nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zdogec to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
-        nProposalEstablishmentTime = 60 * 60 * 24; // Proposals must be at least a day old to make it into a budget
+        nProposalEstablishmentTime = 10; // Proposals must be at least a day old to make it into a budget
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
