@@ -914,7 +914,7 @@ CAmount CBudgetManager::GetTotalBudget(int nHeight)
     CAmount nSubsidy = 0;
     nSubsidy = GetBlockValue(nHeight);
     if (nHeight > 1) {
-        return ((nSubsidy / 100) * 10) * 1440 * 30; //Cut 10% from block rewards for governance
+        return ((nSubsidy / 100) * 10) * 100; //Cut 10% from block rewards for governance
     } else {
         return 0; 
     }
