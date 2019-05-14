@@ -321,7 +321,7 @@ UniValue getaddressesbyaccount(const UniValue& params, bool fHelp)
     return ret;
 }
 
-void SendMoneySC(const CScript scriptPubKeyIn, CAmount nValue, CWalletTx& wtxNew, bool fUseIX = false)
+void SendMoney(const CTxDestination& address, CAmount nValue, CWalletTx& wtxNew, bool fUseIX = false)
 {
     // Check amount
     if (nValue <= 0)
@@ -338,7 +338,7 @@ void SendMoneySC(const CScript scriptPubKeyIn, CAmount nValue, CWalletTx& wtxNew
     }
 
     // Parse dogecash address
-    CScript scriptPubKey = scriptPubKeyIn;
+    CScript scriptPubKey = GetScriptForDestination(address);
 
     // Create and send the transaction
     CReserveKey reservekey(pwalletMain);
