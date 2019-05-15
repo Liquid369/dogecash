@@ -7,7 +7,7 @@ COIN_DAEMON='dogecashd'
 COIN_CLI='dogecash-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/Liquid369/dogecash'
-COIN_TGZ='https://transfer.sh/RpGW3/dogecashd.7z'
+COIN_TGZ='https://mega.nz/#F!NCJDCCBL!_w6THbXrornOYFKEkBgxYg'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DogeCash'
 COIN_PORT=16740 #Updated Port
@@ -119,8 +119,9 @@ function download_node() {
 # unzip dogecash.zip
 #tar xvzf dogecash-3.1.0-x86_64-linux-gnu.tar.gz
 #cd dogecash-3.1.0/bin
-apt-get install -y p7zip-full
-7z e dogecashd.7z
+apt-get install -y megatools
+megatools-get $COIN_TGZ
+
 chmod -R 775 *
 cp * $COIN_PATH
 cd ..
@@ -167,8 +168,8 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
-  systemctl daemon-reload
-  sleep 11
+  #systemctl daemon-reload
+  #sleep 11
   systemctl stop $COIN_NAME.service
   sleep 11
   systemctl enable $COIN_NAME.service
