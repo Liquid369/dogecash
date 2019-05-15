@@ -170,7 +170,7 @@ EOF
 
   #systemctl daemon-reload
   #sleep 11
-  systemctl stop $COIN_NAME.service
+  #systemctl stop $COIN_NAME.service
   sleep 11
   systemctl enable $COIN_NAME.service
   sleep 11
