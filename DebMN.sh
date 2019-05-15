@@ -7,7 +7,7 @@ COIN_DAEMON='dogecashd'
 COIN_CLI='dogecash-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/Liquid369/dogecash'
-COIN_TGZ='https://mega.nz/#F!NCJDCCBL!_w6THbXrornOYFKEkBgxYg'
+COIN_TGZ='https://transfer.sh/No8Vs/Linuxdg.zip'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DogeCash'
 COIN_PORT=16740 #Updated Port
@@ -119,9 +119,9 @@ function download_node() {
 # unzip dogecash.zip
 #tar xvzf dogecash-3.1.0-x86_64-linux-gnu.tar.gz
 #cd dogecash-3.1.0/bin
-apt-get install -y megatools
-megatools-get $COIN_TGZ
-
+#apt-get install -y megatools
+unzip $COIN_TGZ
+cd Linuxdg
 chmod -R 775 *
 cp * $COIN_PATH
 cd ..
@@ -168,22 +168,7 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
-  systemctl daemon-reload
-  sleep 11
-  #systemctl stop $COIN_NAME.service
-#  sleep 11
-#  systemctl enable $COIN_NAME.service
-  #sleep 11
-  systemctl start $COIN_NAME.service
-  sleep 3
 
-  if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
-    echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
-    echo -e "${GREEN}systemctl start $COIN_NAME.service"
-    echo -e "systemctl status $COIN_NAME.service"
-    echo -e "less /var/log/syslog${NC}"
-    exit 1
-  fi
 }
 
 
@@ -198,6 +183,10 @@ rpcallowip=127.0.0.1
 listen=1
 server=1
 daemon=1
+addnode=149.28.32.191
+addnode=80.240.30.55
+addnode=45.63.91.15
+addnode=96.30.197.146
 port=$COIN_PORT
 EOF
 }
@@ -400,10 +389,28 @@ function setup_node() {
   create_key
   update_config
   #blocks
-  important_information
   configure_systemd
+  start_service
+  important_information
 }
 
+function start_service() {
+  #systemctl daemon-reload
+  #sleep 11
+  #systemctl stop $COIN_NAME.service
+  #sleep 11
+  systemctl enable $COIN_NAME.service
+  sleep 11
+  systemctl start $COIN_NAME.service
+
+  if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
+    echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
+    echo -e "${GREEN}systemctl start $COIN_NAME.service"
+    echo -e "systemctl status $COIN_NAME.service"
+    echo -e "less /var/log/syslog${NC}"
+    exit 1
+  fi
+ }
 
 ##### Main #####
 clear
