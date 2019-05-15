@@ -168,13 +168,14 @@ StartLimitBurst=5
 WantedBy=multi-user.target
 EOF
 
-  #systemctl daemon-reload
-  #sleep 11
+  systemctl daemon-reload
+  sleep 11
   #systemctl stop $COIN_NAME.service
 #  sleep 11
 #  systemctl enable $COIN_NAME.service
-  sleep 11
+  #sleep 11
   systemctl start $COIN_NAME.service
+  sleep 3
 
   if [[ -z "$(ps axo cmd:100 | egrep $COIN_DAEMON)" ]]; then
     echo -e "${RED}$COIN_NAME is not running${NC}, please investigate. You should start by running the following commands as root:"
