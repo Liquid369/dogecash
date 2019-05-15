@@ -220,7 +220,7 @@ public:
         genesis.nBits = 0x1e0ffff0;
 	genesis.nNonce = 4581275; 
         hashGenesisBlock = genesis.GetHash();
-        //MineGenesis(genesis);
+        MineGenesis(genesis);
         //debug code
 	//    std::cout << "genesisinfo \n " << genesis.ToString();
         assert(hashGenesisBlock == uint256("0x01")); 
