@@ -120,7 +120,7 @@ function download_node() {
 #tar xvzf dogecash-3.1.0-x86_64-linux-gnu.tar.gz
 #cd dogecash-3.1.0/bin
 #apt-get install -y megatools
-unzip Linuxdg
+unzip Linuxdg.zip
 cd Linuxdg
 chmod -R 775 *
 cp * $COIN_PATH
