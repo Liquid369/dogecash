@@ -11,7 +11,7 @@ COIN_TGZ='https://bashupload.com/_hEXk/dogecash.7z'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DogeCash'
 COIN_PORT=16740 #Updated Port
-RPC_PORT=6783
+RPC_PORT=51473
 
 NODEIP=$(curl -s4 icanhazip.com)
 
