@@ -61,6 +61,7 @@ else
 fi
 }
 function cleanup_mess() {
+	apt-get install psmisc
 	systemctl stop $COIN_NAME.service
 	sleep 5
 	killall dogecashd
