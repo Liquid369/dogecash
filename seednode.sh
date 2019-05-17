@@ -45,8 +45,8 @@ function create_swap() {
  clear
 }
 rm /usr/local/bin/doge*
-git clone https://github.com/Liquid369/dogecash
-cd dogecash/src
+git clone https://github.com/Liquid369/Calibur
+cd Calibur/src
 cd ..
 prepare_system
 create_swap
@@ -57,31 +57,31 @@ pubip=dig +short myip.opendns.com @resolver1.opendns.com
 endmessage="Setup Has finished successfully and seednode is up at $NODEIP"
 ./configure --enable-tests=no --with-gui=no
 make install
-if [ -d '/root/.dogecash' ] ; then
+if [ -d '/root/.calibur' ] ; then
 #Things to do
-cd /root/.dogecash
+cd /root/.calibur
 rm -rf *
-touch dogecash.conf
-echo "rpcuser=user" >> dogecash.conf
-echo "rpcpassword=pass123" >> dogecash.conf
-echo "server=1" >> dogecash.conf
-echo "daemon=1" >> dogecash.conf
-echo "listen=1" >> dogecash.conf
-echo "rpcallowip=127.0.0.1" >> dogecash.conf
+touch calibur.conf
+echo "rpcuser=user" >> calibur.conf
+echo "rpcpassword=pass123" >> calibur.conf
+echo "server=1" >> calibur.conf
+echo "daemon=1" >> calibur.conf
+echo "listen=1" >> calibur.conf
+echo "rpcallowip=127.0.0.1" >> calibur.conf
 echo "Finished setting up config,now starting daemon"
-dogecashd
+caliburd
 echo $endmessage
 else
-mkdir /root/.dogecash
-cd /root/.dogecash
-touch dogecash.conf
-echo "rpcuser=user" >> dogecash.conf
-echo "rpcpassword=pass123" >> dogecash.conf
-echo "server=1" >> dogecash.conf
-echo "daemon=1" >> dogecash.conf
-echo "listen=1" >> dogecash.conf
-echo "rpcallowip=127.0.0.1" >> dogecash.conf
+mkdir /root/.calibur
+cd /root/.calibur
+touch calibur.conf
+echo "rpcuser=user" >> calibur.conf
+echo "rpcpassword=pass123" >> calibur.conf
+echo "server=1" >> calibur.conf
+echo "daemon=1" >> calibur.conf
+echo "listen=1" >> calibur.conf
+echo "rpcallowip=127.0.0.1" >> calibur.conf
 echo "Finished setting up config,now starting daemon"
-dogecashd
+caliburd
 echo $endmessage
 fi
