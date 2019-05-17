@@ -119,7 +119,8 @@ function download_node() {
 # unzip dogecash.zip
 #tar -xzf dogecash.tar.gz
 #cd DogeCash-4.0.0/bin
-7z e dogecash.7z
+unzip Linuxdg.zip
+cd Linuxdg
 chmod -R 775 *
 cp * $COIN_PATH
 cd ..
